@@ -42,19 +42,19 @@ def validate_operation_selected(operacao):
 
     try:
         match operacao:
-            case "+":
+            case '+':
                 input1 = get_int_number()
                 input2 = get_int_number()
                 resultado = adicao(input1, input2)
-            case "-":
+            case '-':
                 input1 = get_int_number()
                 input2 = get_int_number()
                 resultado = subtracao(input1, input2)
-            case "*":
+            case '*':
                 input1 = get_int_number()
                 input2 = get_int_number()
                 resultado = multiplicacao(input1, input2)
-            case "/":
+            case '/':
                 input1 = get_float_number()
                 input2 = get_float_number()
                 resultado = divisao(input1, input2)
