@@ -1,6 +1,7 @@
 import unittest
 from util.operacao import adicao, subtracao, multiplicacao, divisao
 
+
 class TestCalculadora(unittest.TestCase):
 
     def test_adicao(self):

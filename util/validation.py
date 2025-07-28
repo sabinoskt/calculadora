@@ -2,16 +2,16 @@ import sys
 import time
 from util.io import get_generic_content, get_int_number, get_float_number
 from util.operacao import adicao, subtracao, multiplicacao, divisao
-
-# TODO Refatorar
-# print(f"voce escolheu {operacao}")
-# print(f"Voce tem {tentativas} tentativas de {tentativas_permitidas}")
+from util.resultado import result
+from util.message import message_operacao, message_tentativas
 
 tentativas_permitidas = 3
 tentativas = 0
 
+
 def show_continue_or_end():
     print("Encerrar programa? Y/n")
+
 
 def validate_number_attempts():
     global tentativas
@@ -22,8 +22,10 @@ def validate_number_attempts():
 
     tentativas += 1
 
+    message_tentativas(tentativas, tentativas_permitidas)
+
+
 def validate_exit_program():
-    show_continue_or_end()
     exitProgram = str(get_generic_content()).upper()
     if exitProgram == "Y":
         sys.exit(0)
@@ -33,32 +35,29 @@ def validate_exit_program():
         print("Nenhuma opcao correta foi selecionada")
         sys.exit(1)
 
-def result():
-
-    return 
 
 def validate_operation_selected(operacao):
-    global input1
-    global input2
+    message_operacao(operacao)
+    global input1, input2, resultado
 
     try:
         match operacao:
             case "+":
                 input1 = get_int_number()
                 input2 = get_int_number()
-                resultado = result(adicao(input1, input2))
+                resultado = adicao(input1, input2)
             case "-":
                 input1 = get_int_number()
                 input2 = get_int_number()
-                resultado = result(subtracao(input1, input2))
+                resultado = subtracao(input1, input2)
             case "*":
                 input1 = get_int_number()
                 input2 = get_int_number()
-                resultado = result(multiplicacao(input1, input2))
+                resultado = multiplicacao(input1, input2)
             case "/":
                 input1 = get_float_number()
                 input2 = get_float_number()
-                resultado = result(divisao(input1, input2))
+                resultado = divisao(input1, input2)
             case _:
                 time.sleep(0.5)
                 validate_number_attempts()
@@ -66,7 +65,7 @@ def validate_operation_selected(operacao):
     except TypeError:
         print("Nenhuma opção válida selecionada")
         sys.exit(1)
+    except ZeroDivisionError:
+        print("Divisão por zero não é permitida")
 
-    # TODO refatorar codigo abaixo
-    print(f"\nResultado: {resultado}")
-
+    result(resultado)
