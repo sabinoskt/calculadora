@@ -10,5 +10,10 @@ def get_float_number():
 
 
 def get_generic_content():
-    content = input()
+    content = input("\nOperador: ")
+    return content
+
+
+def get_answer_content():
+    content = input("\nResposta: ")
     return content

@@ -1,25 +1,32 @@
-import unittest
 from util.operacao import adicao, subtracao, multiplicacao, divisao
+from faker import Faker
+
+fake = Faker()
 
 
-class TestCalculadora(unittest.TestCase):
+def test_adicao():
+    num1, num2 = fake.random_number(), fake.random_number()
+    expected_value = num1 + num2
+    test_adicao_function = adicao(num1, num2)
+    assert expected_value.__eq__(test_adicao_function)
 
-    def test_adicao(self):
-        expected_value = 256
-        test_adicao_function = adicao(128, 128)
-        self.assertEqual(expected_value, test_adicao_function) 
 
-    def test_subtracao(self):
-        expected_value = 512
-        test_subtracao_function = subtracao(768, 256)
-        self.assertEqual(expected_value, test_subtracao_function)
+def test_subtracao():
+    num1, num2 = fake.random_number(), fake.random_number()
+    expected_value = num1 - num2
+    test_subtracao_function = subtracao(num1, num2)
+    assert expected_value.__eq__(test_subtracao_function)
 
-    def test_multiplicacao(self):
-        expected_value = 1024
-        test_multiplicacao_function = multiplicacao(512, 2)
-        self.assertEqual(expected_value, test_multiplicacao_function)
 
-    def test_divisao(self):
-        expected_value = 256
-        test_divisao_function = divisao(1024, 4)
-        self.assertEqual(expected_value, test_divisao_function)
+def test_multiplicacao():
+    num1, num2 = fake.random_number(), fake.random_number()
+    expected_value = num1 * num2
+    test_multiplicacao_function = multiplicacao(num1, num2)
+    assert expected_value.__eq__(test_multiplicacao_function)
+
+
+def test_divisao():
+    num1, num2 = fake.random_number(), fake.random_number()
+    expected_value = num1 / num2
+    test_divisao_function = divisao(num1, num2)
+    assert expected_value.__eq__(test_divisao_function)

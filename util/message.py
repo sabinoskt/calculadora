@@ -4,3 +4,7 @@ def message_tentativas(tentativas, tentativas_permitidas):
 
 def message_operacao(operacao):
     print(f"voce escolheu {operacao}")
+
+
+def show_continue_or_end():
+    print("Encerrar programa? S/N")
