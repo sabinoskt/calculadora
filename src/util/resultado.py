@@ -1,2 +1,2 @@
-def result(resultado):
+def resultar(resultado):
     print(f"\nResultado: {resultado}")

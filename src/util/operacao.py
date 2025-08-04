@@ -1,6 +1,3 @@
-from util.io import get_int_number, get_float_number
-
-
 def adicao(num1: int, num2: int) -> int:
     return num1 + num2
 

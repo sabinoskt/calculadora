@@ -1,9 +1,12 @@
 import sys
 import time
-from util.io import get_generic_content, get_int_number, get_float_number
-from util.operacao import adicao, subtracao, multiplicacao, divisao
-from util.resultado import result
-from util.message import message_operacao, message_tentativas, show_continue_or_end
+
+from src.util.encerrar import encerrar_programa, nenhuma_opcao_escolhida
+from src.util.io import obter_numero_int, obter_numero_float
+from src.util.message import messagem_operacao
+from src.util.operacao import adicao, multiplicacao, divisao, subtracao
+from src.util.resultado import resultar
+
 
 # tentativas_permitidas = 3
 # tentativas = 0
@@ -21,35 +24,35 @@ from util.message import message_operacao, message_tentativas, show_continue_or_
 #     message_tentativas(tentativas, tentativas_permitidas)
 
 
-def validate_exit_program():
-    print("Nenhuma opção correta foi selecionada")
-    sys.exit(0)
+num1, num2, resultado = 0, 0, 0
 
 
-def validate_operation_selected(operacao):
-    message_operacao(operacao)
-    global input1, input2, resultado
+def validar_operador_escolhido(operacao):
+    messagem_operacao(operacao)
+    global num1, num2, resultado
 
     try:
         match operacao:
             case '+':
-                input1 = get_int_number()
-                input2 = get_int_number()
-                resultado = adicao(input1, input2)
+                num1 = obter_numero_int()
+                num2 = obter_numero_int()
+                resultado = adicao(num1, num2)
             case '-':
-                input1 = get_int_number()
-                input2 = get_int_number()
-                resultado = subtracao(input1, input2)
+                num1 = obter_numero_int()
+                num2 = obter_numero_int()
+                resultado = subtracao(num1, num2)
             case '*':
-                input1 = get_int_number()
-                input2 = get_int_number()
-                resultado = multiplicacao(input1, input2)
+                num1 = obter_numero_int()
+                num2 = obter_numero_int()
+                resultado = multiplicacao(num1, num2)
             case '/':
-                input1 = get_float_number()
-                input2 = get_float_number()
-                resultado = divisao(input1, input2)
+                num1 = obter_numero_float()
+                num2 = obter_numero_float()
+                resultado = divisao(num1, num2)
             case '':
-                validate_exit_program()
+                nenhuma_opcao_escolhida()
+            case 'S':
+                encerrar_programa()
             case _:
                 print("Escolha apenas a opção de operação")
                 time.sleep(0.5)
@@ -62,4 +65,4 @@ def validate_operation_selected(operacao):
     except ZeroDivisionError:
         print("Não é possível dividir por zero")
 
-    result(f"{resultado}\n")
+    resultar(f"{resultado}\n")

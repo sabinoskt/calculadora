@@ -1,19 +1,18 @@
-def get_int_number():
-    number = int(input("Informe um numero inteiro:\n"))
-    return number
+def obter_numero_int():
+    numero = int(input("Informe um numero inteiro:\n"))
+    return numero
 
 
-def get_float_number():
-    number = float(input("Informe um numero real:\n"))
-    print()
-    return number
+def obter_numero_float():
+    numero = float(input("Informe um numero real:\n"))
+    return numero
 
 
-def get_generic_content():
-    content = input("\nOperador: ")
-    return content
+def obter_conteudo_generico():
+    conteudo = input("\nOperador: ")
+    return conteudo
 
 
-def get_answer_content():
-    content = input("\nResposta: ")
-    return content
+def obter_conteudo_resposta():
+    conteudo = input("\nResposta: ")
+    return conteudo

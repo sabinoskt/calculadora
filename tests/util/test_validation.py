@@ -1,5 +1,7 @@
-from util.operacao import adicao, subtracao, multiplicacao, divisao
+
 from faker import Faker
+
+from src.util.operacao import adicao, subtracao, multiplicacao, divisao
 
 fake = Faker()
 

@@ -1,27 +1,21 @@
-from util.io import get_generic_content, get_answer_content
-from util.message import show_continue_or_end
-from util.validation import validate_operation_selected
+from src.util.io import obter_conteudo_generico
+from src.util.validation import validar_operador_escolhido
 
 
-def show_arithmetic_option():
-    operadores = {"Adição": '+', "Subtração": '-', "Multiplicação": '*', "Divisão": '/'}
-    print("-------------------------------- menu -----------------------------")
+def mostar_opcao_aritmetica():
+    operadores = {"Adição": '+', "Subtração": '-', "Multiplicação": '*', "Divisão": '/', "Sair": "S/N"}
+    print(f"{'-' * 20} menu {'-' * 20}")
     print("Escolha o tipo de operacao:")
     for chave, valor in operadores.items():
         print(chave, valor)
 
 
-def operation_request(): # perguntar qual operacao sera feita
-    show_arithmetic_option()
-    operacao = get_generic_content()
-    validate_operation_selected(operacao)
-    show_continue_or_end()
-    encerrar = get_answer_content().upper()
-    if encerrar.__eq__('S'):
-        exit()
-    # validate_operation_selected(get_generic_content())
+def operacao_escolhida(): # perguntar qual operacao sera feita
+    mostar_opcao_aritmetica()
+    operacao = obter_conteudo_generico()
+    validar_operador_escolhido(operacao)
 
 
-def create_menu():
+def mostrar_menu():
     while True:
-        operation_request()
+        operacao_escolhida()
