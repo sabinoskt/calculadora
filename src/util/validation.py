@@ -63,4 +63,3 @@ def validate_operation_selected(operacao):
         print("Não é possível dividir por zero")
 
     result(f"{resultado}\n")
-
