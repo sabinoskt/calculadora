@@ -1,4 +1,4 @@
-from src.resource.menu import mostrar_menu
+from src.resource.menu import menu
 
 if __name__ == "__main__":
-    mostrar_menu()
+    menu()

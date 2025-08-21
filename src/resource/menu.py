@@ -1,21 +1,23 @@
-from src.util.io import obter_conteudo_generico
-from src.util.validation import validar_operador_escolhido
+import os
 
-
-def mostar_opcao_aritmetica():
-    operadores = {"Adição": '+', "Subtração": '-', "Multiplicação": '*', "Divisão": '/', "Sair": "S/N"}
-    print(f"{'-' * 20} menu {'-' * 20}")
-    print("Escolha o tipo de operacao:")
-    for chave, valor in operadores.items():
-        print(chave, valor)
-
-
-def operacao_escolhida(): # perguntar qual operacao sera feita
-    mostar_opcao_aritmetica()
-    operacao = obter_conteudo_generico()
-    validar_operador_escolhido(operacao)
+from src.util.encerrar import encerrar_programa
+from src.util.io import obter_input_num
+from src.util.operacao import validar_operador_escolhido
 
 
 def mostrar_menu():
+    operadores = {'+': "Adição", '-': "Subtração", '*': "Multiplicação", '/': "Divisão", "sair": ''}
+    print(f"{'=' * 20} MENU {'=' * 20}")
+    for i, (chave, valor) in enumerate(operadores.items(), start=1):
+        print(f"[{i}] {chave} {valor}")
+    return len(operadores)
+
+
+def menu():
     while True:
-        operacao_escolhida()
+        qtd_operacoes = mostrar_menu()
+        operacao = obter_input_num("Escolha o tipo de operacao:", minimo=1, maximo=qtd_operacoes)
+        if operacao == qtd_operacoes:
+            os.system("cls" if os.name == "nt" else "clear")
+            encerrar_programa()
+        validar_operador_escolhido(operacao)
