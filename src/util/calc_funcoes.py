@@ -10,6 +10,7 @@ def adicao():
     num2 = obter_input_num("Outra número:")
     calculadora.adicao(num1, num2)
     resultado(calculadora.get_resultado())
+    calculadora.limpar()
 
 
 def subtracao():
@@ -17,6 +18,7 @@ def subtracao():
     num2 = obter_input_num("Outra número:")
     calculadora.subtracao(num1, num2)
     resultado(calculadora.get_resultado())
+    calculadora.limpar()
 
 
 def multiplicacao():
@@ -24,6 +26,7 @@ def multiplicacao():
     num2 = obter_input_num("Outra número:")
     calculadora.multiplicacao(num1, num2)
     resultado(calculadora.get_resultado())
+    calculadora.limpar()
 
 
 def divisao():
@@ -32,5 +35,6 @@ def divisao():
     try:
         calculadora.divisao(num1, num2)
         resultado(calculadora.get_resultado())
+        calculadora.limpar()
     except ValueError as e:
         print(f"Erro: {e}")
